@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "stone-soup"
+version = "0.1.0"
+description = "Stone Soup"
+authors = ["MaxiFrank <maxine.m.liu@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pypdf = "^4.3.1"
+pdfplumber = "^0.11.4"
+black = "^24.8.0"
+mypy = "^1.11.2"
+pylint = "^3.2.7"
+pandas = "^2.2.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -2,7 +2,9 @@ import pdfplumber
 import pprint
 import re
 
-"other problem, most stories do overlap on a page..."
+"""
+Read PDF table of contents
+"""
 
 
 def get_index():
@@ -16,13 +18,15 @@ def get_index():
 
         for page in pages:
             string += page.extract_text_simple() + "\n"
-        with open("table_of_content.txt", "w") as f:
+        with open("test/table_of_content.txt", "w") as f:
             f.write(string)
 
+
 def parse_index(start, end):
-    with open("table_of_content.txt", "r") as f:
+    with open("test/table_of_content.txt", "r") as f:
         lines = f.readlines()
         return lines[start:end]
+
 
 def get_table_of_contents():
     get_index()
@@ -30,12 +34,16 @@ def get_table_of_contents():
     d = {}
     order = 0
     include = True
-    for idx in range(len(lines)-1):
+    for idx in range(len(lines) - 1):
         if "...." not in lines[idx]:
-            person = lines[idx+1].split(",")[0]
+            person = lines[idx + 1].split(",")[0]
             title = lines[idx].strip()
-            start_page_number = "".join(re.findall("(?<=\.)[0-9]+", lines[idx+1]))
-            d[order] = {"person": person, "title" : title, "start_page_number": start_page_number}
+            start_page_number = "".join(re.findall("(?<=\.)[0-9]+", lines[idx + 1]))
+            d[order] = {
+                "person": person,
+                "title": title,
+                "start_page_number": start_page_number,
+            }
             order += 1
             include = False
         elif include == False:
@@ -43,17 +51,15 @@ def get_table_of_contents():
         elif include == True:
             title = "".join(re.findall("[^.0-9]", lines[idx].strip()))
             start_page_number = "".join(re.findall("(?<=\.)[0-9]+", lines[idx]))
-                                       
-            d[order] = {"title": title,"start_page_number": start_page_number}
-            order += 1
-        
 
-    for num in range(len(d)-1):
-        d[num]["end_page_number"] = d[num+1]["start_page_number"]
+            d[order] = {"title": title, "start_page_number": start_page_number}
+            order += 1
+
+    for num in range(len(d) - 1):
+        d[num]["end_page_number"] = d[num + 1]["start_page_number"]
     return d
 
 
-    
 if __name__ == "__main__":
     get_index()
     lines = parse_index(11, 216)
@@ -61,12 +67,16 @@ if __name__ == "__main__":
 
     order = 0
     include = True
-    for idx in range(len(lines)-1):
+    for idx in range(len(lines) - 1):
         if "...." not in lines[idx]:
-            person = lines[idx+1].split(",")[0]
+            person = lines[idx + 1].split(",")[0]
             title = lines[idx].strip()
-            start_page_number = "".join(re.findall("(?<=\.)[0-9]+", lines[idx+1]))
-            d[order] = {"person": person, "title" : title, "start_page_number": start_page_number}
+            start_page_number = "".join(re.findall("(?<=\.)[0-9]+", lines[idx + 1]))
+            d[order] = {
+                "person": person,
+                "title": title,
+                "start_page_number": start_page_number,
+            }
             order += 1
             include = False
         elif include == False:
@@ -74,13 +84,10 @@ if __name__ == "__main__":
         elif include == True:
             title = "".join(re.findall("[^.0-9]", lines[idx].strip()))
             start_page_number = "".join(re.findall("(?<=\.)[0-9]+", lines[idx]))
-                                       
-            d[order] = {"title": title,"start_page_number": start_page_number}
+
+            d[order] = {"title": title, "start_page_number": start_page_number}
             order += 1
-        
 
-    for num in range(len(d)-1):
-        d[num]["end_page_number"] = d[num+1]["start_page_number"]
+    for num in range(len(d) - 1):
+        d[num]["end_page_number"] = d[num + 1]["start_page_number"]
     pprint.pp(d)
-
-        

@@ -5,6 +5,7 @@ import re
 
 MAKE_INDEX = True
 
+
 def get_index():
     """
     Get the index pages and return arrays
@@ -16,18 +17,22 @@ def get_index():
 
         for page in pages:
             string += page.extract_text_simple() + "\n"
-        with open("stories.txt", "w") as f:
+        with open("test/stories.txt", "w") as f:
             f.write(string)
     MAKE_INDEX = False
 
+
 def parse_index(start, end):
-    with open("stories.txt", "r") as f:
+    with open("test/stories.txt", "r") as f:
         lines = f.readlines()
         return lines[start:end]
+
+
 """
 1. grab line with |, text before on same line is person, text after on the same line is location (done)
 2. when I find this pattern, give me the line above, which will be title
 """
+
 
 def parse_text(line):
     # do multi-line and get the line before
@@ -40,9 +45,10 @@ def parse_text(line):
     if result == None:
         return None
     else:
-        person = result.group('person').strip()
-        location = result.group('location').strip()
+        person = result.group("person").strip()
+        location = result.group("location").strip()
         return person, location
+
 
 def parse_stories():
     get_index()
@@ -63,7 +69,7 @@ def parse_stories():
                 excerpts[prev_person] = excerpt
             prev_person = person
             prev = next
-            
+
     return excerpts
 
 
@@ -81,19 +87,19 @@ if __name__ == "__main__":
         if parse_text(line) is not None:
             person, location = parse_text(line)
             # chapters[person] = {'location': location}
-              
+
             print("person text is", person)
             print("location is", location)
             print("---------------------------------------")
             next = idx - 1
-            
+
             title = text[next]
 
             if next:
                 excerpt = text[prev:next]
-                
+
                 excerpts[prev_person] = excerpt
             prev_person = person
             prev = next
-    print(excerpts['Jamie Margolin'])
-    print(excerpts['Lilly Platt'])
+    print(excerpts["Jamie Margolin"])
+    print(excerpts["Lilly Platt"])

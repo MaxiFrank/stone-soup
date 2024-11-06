@@ -1,0 +1,177 @@
+[resolved] analysis: this one needs to add - as ok in regex, there's no number at the first line
+
+COVID-
+19
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+
+[resolved] the 2 examples below, see original text. the first line that needs to be concatenated has numbers associated with them as well.
+      x communities 36, 133                                 
+       African Americans, low-income 149, 168               
+       housing and 336                                      
+       Indigenous Mayans 125                                
+       LatinX farmworkers 159                               
+       South Los Angeles 98                                 
+       Sri Lanka 212                                        
+       Vieques and Puerto Rico 289, 443, 447                
+       Virgin Gorda 453                                     
+       youth in criminal justice system 160                 
+      Margolin, Jamie 34, 45, 47  
+
+x communities
+36, 133
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+
+
+      Right to the City Alliance (RTTC) 336                 
+      Rise Up Africa Movement 167                           
+      risks of activism 125, 126, 140, 144                  
+       arrests 134, 202, 364, 394, 447                      
+       harassment 59                                        
+       in Russia 72                                         
+       violence 78, 385, 416                                
+      Rivera, Diego 79  
+
+risks of activism
+125, 126, 140, 144
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+-------------------------------------
+
+[resolved] analysis: text is Trees4Goals 222, so need at least a space before \d starts
+Trees
+4
+-------------------------------------
+
+[resolved] analysis: need to include ( and ) in regex
+-------------------------------------
+Voting Rights Act (
+1965
+
+
+-------------------------------------
+Women’s March on Washington (
+2017
+
+[resolved]
+just take the last line with number, then concatenate all the lines without numbers
+use line number to do it
+text with 6 spaces, no numbers
+text with 10 spaces, no number
+text with 7 spaces, yes numbers
+
+      activism. See also climate change activism; technology for activism; risks of
+          activism; political activism                      
+       skill sets for 130                                   
+
+Analysis: this one has no numbers at all, so skip
+text with 6 spaces, no numbers
+text with 10 spaces, no numbers
+      pollution. See water pollution; air pollution; ocean pollution; plastic pollution;
+          soil pollution                                    
+
+[resolvd] new issue:
+only getting the last number of each tag, I should be getting all the numbers
+
+null stories:
+[resolved]
+  "9": {
+    "person": "Asha Kirkpatrick",
+    "title": "Small People Creating Big Changes",
+    "start_page_number": "68",
+    "end_page_number": "72",
+    "story": null
+  },
+[resolved]
+    "14": {
+    "person": "Vihaan Agarwal",
+    "title": "Turning Trash Into Trees",
+    "start_page_number": "89",
+    "end_page_number": "93",
+    "story": null
+  },
+[resolved]
+    "27": {
+    "person": "U.S. Representative John Lewis",
+    "title": "Get Into Good Trouble!",
+    "start_page_number": "144",
+    "end_page_number": "147",
+    "story": null
+  },
+[resolved]
+    "64": {
+    "person": "Salvador Gabriel Gomez Col\u00f3n",
+    "title": "Light And Hope For Puerto Rico",
+    "start_page_number": "289",
+    "end_page_number": "293",
+    "story": null
+  },
+
+[resolved, don't need]
+    "71": {
+    "person": "Sustainable Business.............................................................................316\n",
+    "title": "V. Doing Well by Doing Good for the Planet:",
+    "start_page_number": "316",
+    "end_page_number": "320",
+    "story": null
+  },
+[resolved]
+    "80": {
+    "person": "Lara and Claire Nuer",
+    "title": "Learning As Leadership: Humanizing Business",
+    "start_page_number": "350",
+    "end_page_number": "355",
+    "story": null
+  },
+[resolved]
+    "98": {
+    "person": "Dr. Ari Ariyaratne",
+    "title": "Youthforce Carries On Dr. Ari\u2019s Legacy",
+    "start_page_number": "423",
+    "end_page_number": "430",
+    "story": null
+  },
+
+[tried to resolve]
+need to add end_page_number at 462
+    "105": {
+    "person": "Trevor Tanaka",
+    "title": "What Does Sustainability Mean To You?",
+    "start_page_number": "458",
+    "story": null
+  }
+
+--------------------------
+[resloved] end page number is null
+ "15": {
+    "person": "Jessa Garibay-Yayen",
+    "title": "Traveling With A Purpose",
+    "start_page_number": "93",
+    "end_page_number": "",
+    "story": [
+
+--------------------------
+[resolved]start page is null
+ "16": {
+    "person": "Kevin J. Patel",
+    "title": "We Are The Leaders Of Today",
+    "start_page_number": "",
+    "end_page_number": "101",
+    "story": [
+      "We Are The Leaders Of Today\n",
+      "Kevin J. Patel | Los Angeles, California\n",
+      "Kevin J. Patel was sittin

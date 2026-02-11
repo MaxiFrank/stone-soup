@@ -4,15 +4,17 @@ version = "0.1.0"
 description = "Stone Soup"
 authors = ["MaxiFrank <maxine.m.liu@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.12"
 pypdf = "^4.3.1"
 pdfplumber = "^0.11.4"
 black = "^24.8.0"
 mypy = "^1.11.2"
 pylint = "^3.2.7"
 pandas = "^2.2.3"
+cryptography = ">=46.0.5"
 
 
 [build-system]
